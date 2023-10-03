@@ -7,6 +7,8 @@ package fr.istic.aco.editor;
  * @version 1.0
  */
 public interface Selection {
+	
+	
 
     /**
      * Provides the index of the first character designated
@@ -55,6 +57,11 @@ public interface Selection {
      * @throws IndexOutOfBoundsException if the beginIndex is out of bounds
      */
     void setEndIndex(int endIndex);
+    
+    /**
+     * Clear the selection (make it empty).
+     */
+    void clear();
 
 
 }
