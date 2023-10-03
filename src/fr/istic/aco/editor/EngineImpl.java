@@ -2,9 +2,15 @@ package fr.istic.aco.editor;
 
 public class EngineImpl implements Engine {
 	
-	private StringBuilder buffer = new StringBuilder();
-	private String clipboard = "";
-	private Selection selection = new SelectionImpl(buffer);
+	private StringBuilder buffer;
+	private String clipboard;
+	private Selection selection;
+	
+	public EngineImpl() {
+		this.buffer = new StringBuilder();
+		this.selection = new SelectionImpl(buffer);
+		this.clipboard = this.getClipboardContents();
+	}
     /**
      * Provides access to the selection control object
      *
