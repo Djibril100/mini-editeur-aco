@@ -1,4 +1,4 @@
-package fr.istic.aco.editor;
+package fr.istic.aco.editor.receiver;
 
 public class EngineImpl implements Engine {
 	
@@ -19,7 +19,7 @@ public class EngineImpl implements Engine {
     @Override
     public Selection getSelection() {
         // TODO
-        return this.selection;
+    		return this.selection;
     }
 
     /**
@@ -54,12 +54,8 @@ public class EngineImpl implements Engine {
         // TODO
     	int debut = selection.getBeginIndex();
     	int fin = selection.getEndIndex();
-    	
-    	if(debut >= 0 && fin <= buffer.length()) {
-    		this.clipboard = this.buffer.substring(debut, fin);
-    		this.buffer.delete(debut, fin);
-    		selection.clear();	
-    	}
+    	this.clipboard = this.buffer.substring(debut, fin);
+    	this.buffer.delete(debut, fin);	
     }
 
     /**
@@ -72,11 +68,7 @@ public class EngineImpl implements Engine {
         // TODO
     	int debut = selection.getBeginIndex();
     	int fin = selection.getEndIndex();
-    	
-    	if(debut >= 0 && fin <= buffer.length()) {
-    		this.clipboard = this.buffer.substring(debut, fin);
-    		selection.clear();	
-    	}
+    	this.clipboard = this.buffer.substring(debut, fin);	
     }
 
     /**
@@ -88,9 +80,8 @@ public class EngineImpl implements Engine {
         // TODO
     	if(!this.clipboard.isEmpty()) {
     		int debut = selection.getBeginIndex();
-    		if(debut>=0 && debut <= buffer.length()) {
-    			this.buffer.insert(debut, clipboard);
-    		}
+    		this.buffer.replace(debut, debut, clipboard);
+    		//this.buffer.insert(debut, clipboard);
     	}
     }
 
@@ -103,19 +94,9 @@ public class EngineImpl implements Engine {
     public void insert(String s) {
     	int debut = selection.getBeginIndex();
     	int fin = selection.getEndIndex();
-    	if(debut>=0 && fin <= buffer.length()) {
-    		this.buffer.append(s, debut, fin);
-    		this.selection.clear();
-    	}
-    }
+    	this.buffer.replace(debut, fin, s);
     
-	/*
-	 * @Override public void insert(String s) { int begin =
-	 * selection.getBeginIndex(); int end = selection.getEndIndex(); if (begin >= 0
-	 * && end <= buffer.length()) { buffer.replace(begin, end, s);
-	 * selection.setBeginIndex(begin + s.length()); selection.setEndIndex(begin +
-	 * s.length()); selection.clear(); } }
-	 */
+    }
 
     /**
      * Removes the contents of the selection in the buffer
@@ -125,10 +106,7 @@ public class EngineImpl implements Engine {
     	
     	int debut = selection.getBeginIndex();
     	int fin = selection.getEndIndex();
-    	
-    	if(debut >= 0 && fin <= buffer.length()) {
-    		this.buffer.delete(debut, fin);
-    		selection.clear();
-    	}
+    	this.buffer.delete(debut, fin);
+    
     }
 }

@@ -1,4 +1,4 @@
-package fr.istic.aco.editor;
+package fr.istic.aco.editor.receiver;
 
 public class SelectionImpl implements Selection {
 
@@ -40,7 +40,7 @@ public class SelectionImpl implements Selection {
 	@Override
 	public void setBeginIndex(int beginIndex) {
 		// TODO Auto-generated method stub
-		if(beginIndex >= BUFFER_BEGIN_INDEX && beginIndex <= this.getBufferEndIndex()) {
+		if(beginIndex >= BUFFER_BEGIN_INDEX && beginIndex <= this.endIndex) {
 			this.beginIndex = beginIndex;
 		}else {
 			throw new IndexOutOfBoundsException("Begin index not valid !");
@@ -51,18 +51,13 @@ public class SelectionImpl implements Selection {
 	@Override
 	public void setEndIndex(int endIndex) {
 		// TODO Auto-generated method stub
-		if(endIndex >= BUFFER_BEGIN_INDEX && endIndex <= this.getBufferEndIndex()) {
+		if(endIndex >= beginIndex && endIndex <= this.getBufferEndIndex()) {
 			this.endIndex = endIndex;
 		}else {
 			throw new IndexOutOfBoundsException("End index not valid !");
 		}
 	}
 
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		this.beginIndex = BUFFER_BEGIN_INDEX;
-		this.endIndex = BUFFER_BEGIN_INDEX;
-	}
+
 
 }

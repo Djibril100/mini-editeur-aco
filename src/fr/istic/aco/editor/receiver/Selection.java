@@ -1,4 +1,4 @@
-package fr.istic.aco.editor;
+package fr.istic.aco.editor.receiver;
 
 /**
  * Provides access to selection control operations
@@ -58,10 +58,7 @@ public interface Selection {
      */
     void setEndIndex(int endIndex);
     
-    /**
-     * Clear the selection (make it empty).
-     */
-    void clear();
+
 
 
 }
