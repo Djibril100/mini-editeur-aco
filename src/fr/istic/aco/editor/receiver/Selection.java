@@ -3,7 +3,7 @@ package fr.istic.aco.editor.receiver;
 /**
  * Provides access to selection control operations
  *
- * @author plouzeau
+ * @author Abdoulaye Djibril BARRY / Yaya KOMARA
  * @version 1.0
  */
 public interface Selection {
@@ -58,7 +58,5 @@ public interface Selection {
      */
     void setEndIndex(int endIndex);
     
-
-
 
 }

@@ -26,8 +26,7 @@ class EngineTest {
     @DisplayName("Buffer must be empty after initialisation")
     void getSelection() {
     	engine = new EngineImpl();
-        //engine.insert("My best text insert");
-        
+    	
         Selection selection = engine.getSelection();
         assertEquals(selection.getBufferBeginIndex(),selection.getBeginIndex());
         assertEquals("",engine.getBufferContents());
