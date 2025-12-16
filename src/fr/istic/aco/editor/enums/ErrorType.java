@@ -8,5 +8,6 @@ public enum ErrorType {
     INVOKER_NOT_FOUND,
     RECEIVER_NOT_FOUND,
     INVOKER_OR_RECEIVER_NOT_FOUND,
+    BUFFER_NOT_FOUND
 
 }

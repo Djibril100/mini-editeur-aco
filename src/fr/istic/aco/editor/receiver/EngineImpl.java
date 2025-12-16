@@ -1,12 +1,14 @@
 package fr.istic.aco.editor.receiver;
 
+import fr.istic.aco.editor.exceptions.EditorException;
+
 public class EngineImpl implements Engine {
 	
 	private StringBuilder buffer;
 	private String clipboard;
 	private Selection selection;
 	
-	public EngineImpl() {
+	public EngineImpl() throws EditorException {
 		this.buffer = new StringBuilder();
 		this.selection = new SelectionImpl(buffer);
 		this.clipboard = this.getClipboardContents();
@@ -55,7 +57,8 @@ public class EngineImpl implements Engine {
     	int debut = selection.getBeginIndex();
     	int fin = selection.getEndIndex();
     	this.clipboard = this.buffer.substring(debut, fin);
-    	this.buffer.delete(debut, fin);	
+   
+        this.delete();
     }
 
     /**
@@ -95,6 +98,11 @@ public class EngineImpl implements Engine {
     	int debut = selection.getBeginIndex();
     	int fin = selection.getEndIndex();
     	this.buffer.replace(debut, fin, s);
+    	
+    	int newEnd = debut + s.length();
+    	 selection.setEndIndex(newEnd);
+        selection.setBeginIndex(newEnd);
+       
     
     }
 
@@ -107,7 +115,8 @@ public class EngineImpl implements Engine {
     	int debut = selection.getBeginIndex();
     	int fin = selection.getEndIndex();
     	this.buffer.delete(debut, fin);
-    
+    	
+    	selection.setEndIndex(debut); 
     }
     
 }
